@@ -1,0 +1,17 @@
+
+#Get Linux AMI ID using SSM Parameter endpoint in us-east-1
+data "aws_ssm_parameter" "ec2-ami" {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+
+# Variables  for Dynamic Block 
+variable "IngressPorts" {
+  type    = list (number)
+  default = [80, 443,53]
+}
+
+variable "EgressPorts" {
+  type    = list (number)
+  default = [80, 443, 53]
+}
+
